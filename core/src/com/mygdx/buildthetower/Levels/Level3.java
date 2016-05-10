@@ -21,6 +21,9 @@ import com.mygdx.buildthetower.Assets;
 import com.mygdx.buildthetower.BuildTheTower;
 import com.mygdx.buildthetower.Screens.MainMenu;
 
+import static com.badlogic.gdx.scenes.scene2d.actions.Actions.run;
+import static com.badlogic.gdx.scenes.scene2d.actions.Actions.sequence;
+
 
 /**
  * Created by musial321 on 4/8/2016
@@ -425,8 +428,19 @@ public class Level3 implements Screen {
         star1.setOrigin(star1.getWidth()/2,star1.getHeight()/2);
         star1.setSize(star1.getWidth(),star1.getHeight());
 
-        star1.addAction(Actions.parallel(Actions.scaleTo(.2f,.2f,.3f),Actions.moveBy(-70,0,.3f),Actions.rotateBy(20,.3f)));
+        Runnable gemSound = new Runnable() {
+            @Override
+            public void run() {
+                Assets.gemSound.stop();
+                Assets.gemSound.play();
+            }
+        };
+
+        star1.addAction(sequence(Actions.parallel(Actions.scaleTo(.2f,.2f,.3f),Actions.moveBy(-70,0,.3f),Actions.rotateBy(20,.3f),run(gemSound))));
         stage.addActor(star1);
+
+
+
 
         if(counter > 1) {
             Image star2 = new Image(Assets.diamond);
@@ -436,7 +450,7 @@ public class Level3 implements Screen {
             star2.setOrigin(star1.getWidth() / 2, star1.getHeight() / 2);
             star2.setSize(star1.getWidth(), star1.getHeight());
 
-            star2.addAction(Actions.sequence(Actions.alpha(0f), Actions.delay(.4f), Actions.alpha(1), Actions.parallel(Actions.scaleTo(.2f, .2f, .3f), Actions.moveBy(-35, 0, .3f),Actions.rotateBy(10,.3f))));
+            star2.addAction(sequence(Actions.alpha(0f), Actions.delay(.4f), Actions.alpha(1), Actions.parallel(Actions.scaleTo(.2f, .2f, .3f), Actions.moveBy(-35, 0, .3f),Actions.rotateBy(10,.3f),run(gemSound))));
             stage.addActor(star2);
         }
 
@@ -449,7 +463,8 @@ public class Level3 implements Screen {
             star2.setOrigin(star1.getWidth() / 2, star1.getHeight() / 2);
             star2.setSize(star1.getWidth(), star1.getHeight());
 
-            star2.addAction(Actions.sequence(Actions.alpha(0f), Actions.delay(.8f), Actions.alpha(1), Actions.parallel(Actions.scaleTo(.2f, .2f, .3f), Actions.moveBy(0, 0, .3f))));
+            star2.addAction(sequence(Actions.alpha(0f), Actions.delay(.8f), Actions.alpha(1), Actions.parallel(Actions.scaleTo(.2f, .2f, .3f), Actions.moveBy(0, 0, .3f),run(gemSound))));
+
             stage.addActor(star2);
         }
 
@@ -461,7 +476,7 @@ public class Level3 implements Screen {
             star3.setOrigin(star1.getWidth() / 2, star1.getHeight() / 2);
             star3.setSize(star1.getWidth(), star1.getHeight());
 
-            star3.addAction(Actions.sequence(Actions.alpha(0f), Actions.delay(1.2f), Actions.alpha(1), Actions.parallel(Actions.scaleTo(.2f, .2f, .3f), Actions.moveBy(35, 0, .3f), Actions.rotateBy(-10))));
+            star3.addAction(sequence(Actions.alpha(0f), Actions.delay(1.2f), Actions.alpha(1), Actions.parallel(Actions.scaleTo(.2f, .2f, .3f), Actions.moveBy(35, 0, .3f), Actions.rotateBy(-10),run(gemSound))));
             stage.addActor(star3);
         }
 
@@ -473,7 +488,7 @@ public class Level3 implements Screen {
             star3.setOrigin(star1.getWidth() / 2, star1.getHeight() / 2);
             star3.setSize(star1.getWidth(), star1.getHeight());
 
-            star3.addAction(Actions.sequence(Actions.alpha(0f), Actions.delay(1.6f), Actions.alpha(1), Actions.parallel(Actions.scaleTo(.2f, .2f, .3f), Actions.moveBy(70, 0, .3f), Actions.rotateBy(-20))));
+            star3.addAction(sequence(Actions.alpha(0f), Actions.delay(1.6f), Actions.alpha(1), Actions.parallel(Actions.scaleTo(.2f, .2f, .3f), Actions.moveBy(70, 0, .3f), Actions.rotateBy(-20),run(gemSound))));
             stage.addActor(star3);
         }
 
