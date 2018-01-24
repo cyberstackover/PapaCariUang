@@ -72,9 +72,9 @@ public class MainMenu implements Screen {
 
 
 
-
-        Gdx.gl.glClearColor(.62f,.72f,1f,1);
+        Gdx.gl.glClearColor(.329412f,.329412f,.329412f,1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
 
 
         stage.act(delta);
